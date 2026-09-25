@@ -33,7 +33,7 @@ if('IntersectionObserver' in window){
       if(en.isIntersecting){
         links.forEach(function(l){l.style.color='';l.classList.remove('active');});
         var l=map[en.target.id];
-        if(l&&!l.classList.contains('cta'))l.style.color='#2de2ff';
+        if(l&&!l.classList.contains('cta'))l.style.color='#a9c1dd';
       }
     });
   },{rootMargin:'-40% 0px -55% 0px'});
@@ -46,7 +46,7 @@ var ctx=canvas.getContext('2d');
 var reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 var small=window.innerWidth<700;
 var particles=[],W,H;
-var colors=['45,226,255','124,92,255','255,92,138','255,225,77','201,246,90'];
+var colors=['169,193,221','93,114,144','215,221,230','125,148,181','240,243,247'];
 function make(){
   var count=reduceMotion||small?26:55;
   particles=[];
