@@ -9,12 +9,17 @@
   --grad2:linear-gradient(120deg,#c5d2e2,#88a0c0,#59708f);
   --font:'Inter',system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   --nav-h:216px;
+  /* safe-area: «чёлка»/скруглённые углы на телефонах (см. viewport-fit=cover в index.html) */
+  --safe-t:env(safe-area-inset-top,0px);--safe-b:env(safe-area-inset-bottom,0px);
 }
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{
   font-family:var(--font);background:var(--ink);color:var(--txt);
   line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;
 }
+a,button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+body.menu-lock{overflow:hidden}
+
 /* Градиентная меша-подложка */
 body::before{
   content:"";position:fixed;inset:0;z-index:-1;
@@ -38,7 +43,7 @@ img,svg{display:block}
 ::selection{background:rgba(169,193,221,.35);color:#060a10}
 #particles{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.6}
 
-h1,h2,h3{line-height:1.08;letter-spacing:-.02em;font-weight:900}
+h1,h2,h3{line-height:1.08;letter-spacing:-.02em;font-weight:900;overflow-wrap:break-word}
 .grad-text{background:var(--grad1);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200% 100%;animation:grad-move 6s ease-in-out infinite alternate}
 .section{padding:104px 24px;position:relative}
 .wrap{max-width:1180px;margin:0 auto}
@@ -87,23 +92,31 @@ h1,h2,h3{line-height:1.08;letter-spacing:-.02em;font-weight:900}
 .burger{display:none;background:none;border:none;cursor:pointer;padding:10px}
 .burger span{display:block;width:24px;height:3px;background:#fff;margin:5px 0;border-radius:3px;transition:.3s}
 @media(max-width:880px){
+  /* Компактная шапка: крупные --nav-h:216px и лого 192px остаются только на десктопе */
+  :root{--nav-h:clamp(66px,11vw,104px)}
+  #nav{height:calc(var(--nav-h) + var(--safe-t));padding:var(--safe-t) 18px 0}
+  .brand{gap:12px;font-size:clamp(1.15rem,2.6vw,1.7rem)}
+  .brand .mark{width:clamp(34px,7.6vw,60px);height:clamp(34px,7.6vw,60px)}
   .menu{
-    position:fixed;top:var(--nav-h);right:0;left:0;flex-direction:column;align-items:stretch;
+    position:fixed;top:calc(var(--nav-h) + var(--safe-t));right:0;left:0;flex-direction:column;align-items:stretch;
     background:rgba(6,7,10,.97);backdrop-filter:blur(18px);padding:12px 18px 22px;gap:4px;
     transform:translateY(-130%);opacity:0;transition:.35s;box-shadow:0 30px 50px rgba(0,0,0,.5);
     border-bottom:1px solid var(--line);
+    max-height:calc(100vh - var(--nav-h) - var(--safe-t));max-height:calc(100dvh - var(--nav-h) - var(--safe-t));
+    overflow-y:auto;overscroll-behavior:contain;
   }
   .menu.open{transform:none;opacity:1}
-  .menu a{display:block;padding:13px 16px}
-  .burger{display:block}
+  .menu a{display:block;padding:13px 16px;min-height:48px}
+  .burger{display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:10px}
   .burger.open span:nth-child(1){transform:translateY(8px) rotate(45deg)}
   .burger.open span:nth-child(2){opacity:0}
   .burger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+  #hero{padding:calc(var(--nav-h) + var(--safe-t) + 34px) 20px 76px}
 }
-section[id]{scroll-margin-top:calc(var(--nav-h) + 12px)}
+section[id]{scroll-margin-top:calc(var(--nav-h) + var(--safe-t) + 12px)}
 
 /* ============ HERO ============ */
-#hero{min-height:100vh;display:flex;align-items:center;padding:calc(var(--nav-h) + 40px) 24px 90px;position:relative;overflow:hidden}
+#hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:calc(var(--nav-h) + 40px) 24px 90px;position:relative;overflow:hidden}
 #hero .wrap{max-width:1180px;display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;position:relative;z-index:2}
 #hero .blob-a{width:340px;height:340px;background:var(--grad1);top:-40px;left:-60px}
 #hero .blob-b{width:300px;height:300px;background:var(--grad2);bottom:-60px;right:-40px;animation-delay:2s}
@@ -185,7 +198,8 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 12px)}
 .pcard{background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:26px;padding:16px;transition:.4s;position:relative}
 .pcard:hover{transform:translateY(-6px) rotate(.6deg);border-color:rgba(169,193,221,.45);box-shadow:0 26px 70px rgba(93,114,144,.3)}
 .pcard .pic{border-radius:18px;overflow:hidden;background:linear-gradient(180deg,#10141d,#07080a);border:1px solid var(--line);margin-bottom:14px;position:relative}
-.pcard .pic svg{width:100%;height:auto;display:block}
+.pcard .pic svg,.pcard .pic img{width:100%;height:auto;display:block}
+.pcard .pic img{aspect-ratio:4/5;object-fit:cover}
 .pcard .sticker{position:absolute;top:12px;right:12px;background:var(--grad2);color:#0a0e16;font-weight:800;font-size:.72rem;padding:6px 12px;border-radius:100px;box-shadow:0 6px 18px rgba(136,160,192,.4)}
 .pcard figcaption{padding:6px 10px 12px}
 .pcard .tag{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.1em;color:var(--steel-l);background:rgba(169,193,221,.1);padding:4px 12px;border-radius:100px;margin-bottom:12px}
@@ -238,6 +252,60 @@ footer .f-nav a{color:var(--txt2);font-weight:600;transition:.25s}
 footer .f-nav a:hover{color:var(--steel-l)}
 footer .brand-line{font-weight:900;font-size:1.2rem;margin-bottom:10px;font-style:italic}
 footer .brand-line em{background:var(--grad1);-webkit-background-clip:text;background-clip:text;color:transparent;font-style:normal}
+
+/* ============ МОБИЛЬНАЯ АДАПТАЦИЯ (≤700px) ============ */
+.mbar{display:none}
+@media(max-width:700px){
+  .section{padding:64px 16px}
+  .section-head{margin-bottom:34px}
+  .kicker{font-size:.7rem;padding:6px 13px;margin-bottom:14px}
+  .section-head p{font-size:1rem}
+  #hero{padding:calc(var(--nav-h) + var(--safe-t) + 26px) 16px 66px}
+  #hero h1{font-size:clamp(1.95rem,8.6vw,2.6rem)}
+  #hero .lead{font-size:1rem;margin-bottom:26px}
+  .cta-row{flex-direction:column;gap:10px}
+  .btn{width:100%;min-height:52px;justify-content:center;padding:14px 20px}
+  .btn svg{flex:none}
+  .hero-note{font-size:.84rem;margin-top:14px}
+  .hero-stats{gap:14px 16px;margin-top:30px}
+  .stat .ico{width:38px;height:38px;border-radius:12px}
+  .stat b{font-size:1.15rem}
+  .stat span{font-size:.78rem}
+  .hero-img{height:290px;margin-top:10px}
+  .chip{font-size:.76rem;padding:8px 12px}
+  .marquee{padding:11px 0}
+  .marquee .track{gap:26px;padding-left:26px}
+  .marquee .track span{font-size:.95rem}
+  .gallery,.services,.portfolio,.steps,.contacts,.contacts-2{gap:14px}
+  .gimg .cap{left:10px;right:10px;bottom:10px;padding:9px 12px;font-size:.82rem}
+  .service{padding:22px 18px;border-radius:20px}
+  .service .ic{width:44px;height:44px;border-radius:14px}
+  .service h3{font-size:1.1rem}
+  .pcard{padding:12px;border-radius:20px}
+  .pcard h3{font-size:1.12rem}
+  .pcard figcaption{padding:4px 6px 8px}
+  .portfolio-cta{margin-top:30px}
+  .step{padding:22px 18px;border-radius:20px}
+  .step .n{width:40px;height:40px;border-radius:13px;font-size:1.05rem;margin-bottom:12px}
+  .pledge{padding:26px 18px;border-radius:20px;font-size:.98rem}
+  .contact{padding:26px 18px;border-radius:20px}
+  .cta-panel{padding:46px 20px;border-radius:22px}
+  .cta-panel p{margin-bottom:24px;font-size:1rem}
+  footer{padding:36px 16px}
+  /* Нижняя панель контактов: основной CTA всегда под пальцем */
+  .mbar{
+    position:fixed;left:0;right:0;bottom:0;z-index:100;display:grid;grid-template-columns:1fr 1fr;gap:10px;
+    padding:10px 12px calc(10px + var(--safe-b));background:rgba(6,7,10,.9);
+    backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-top:1px solid var(--line);
+  }
+  .mbar .btn{min-height:46px;padding:12px 8px;font-size:.92rem;gap:7px}
+  body{padding-bottom:calc(67px + var(--safe-b))} /* чтобы футер не скрывался под панелью */
+}
+
+/* На тач-устройствах hover «залипает» после тапа — отключаем смещения карточек и кнопок */
+@media(hover:none){
+  .btn:hover,.gimg:hover,.service:hover,.pcard:hover,.step:hover,.contact:hover,.menu .cta:hover{transform:none}
+}
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}

@@ -1,11 +1,19 @@
 /* ===== МОБИЛЬНОЕ МЕНЮ ===== */
 var burger=document.getElementById('burger'),menu=document.getElementById('menu');
+function closeMenu(){
+  menu.classList.remove('open');burger.classList.remove('open');
+  burger.setAttribute('aria-expanded','false');document.body.classList.remove('menu-lock');
+}
 burger.addEventListener('click',function(){
   var open=menu.classList.toggle('open');
   burger.classList.toggle('open',open);
   burger.setAttribute('aria-expanded',open);
+  document.body.classList.toggle('menu-lock',open);
 });
-menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){menu.classList.remove('open');burger.classList.remove('open');burger.setAttribute('aria-expanded','false');});});
+menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMenu);});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});
+/* брейкпоинт меню — 880px в index.css: при выходе за него меню и блокировка скролла снимаются */
+window.addEventListener('resize',function(){if(window.innerWidth>880)closeMenu();},{passive:true});
 
 /* ===== ЛИПКАЯ НАВИГАЦИЯ ===== */
 var nav=document.getElementById('nav');
@@ -44,6 +52,8 @@ if('IntersectionObserver' in window){
 var canvas=document.getElementById('particles');
 var ctx=canvas.getContext('2d');
 var reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var pageVisible=true;
+document.addEventListener('visibilitychange',function(){pageVisible=!document.hidden;});
 var small=window.innerWidth<700;
 var particles=[],W,H;
 var colors=['169,193,221','93,114,144','215,221,230','125,148,181','240,243,247'];
@@ -56,7 +66,7 @@ function make(){
 }
 function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;make();}
 function draw(){
-  if(!reduceMotion){
+  if(!reduceMotion&&pageVisible){
     ctx.clearRect(0,0,W,H);
     for(var i=0;i<particles.length;i++){
       var p=particles[i];

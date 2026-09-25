@@ -22,11 +22,24 @@
 ```
 index.html ──> index.css   (стили; классы кнопок контактов: .btn-tg, .btn-avito, .contacts-2, .contact-link)
     └─> index.js
-          ├─ мобильное меню (#burger/#menu), липкая навигация (#nav.scrolled)
+          ├─ мобильное меню (#burger/#menu, классы .open и body.menu-lock), липкая навигация (#nav.scrolled)
           ├─ scroll-reveal (.reveal/.visible) и активный якорь меню (IntersectionObserver)
-          └─ canvas-частицы (#particles)
+          └─ canvas-частицы (#particles, пауза на visibilitychange)
 ```
 Внешних зависимостей (CDN, API, хранилища) нет. localStorage/sessionStorage не используются.
+
+## Мобильная адаптация
+Единая точка правки адаптивности — `index.css`. Десктоп намеренно «крупный»: `--nav-h:216px`, лого `.brand .mark` 192px, шрифт бренда 6.6rem; всё это переопределяется только в медиазапросах.
+
+| Брейкпоинт | Что происходит |
+|---|---|
+| `max-width:880px` | компактная шапка: `--nav-h:clamp(66px,11vw,104px)`, лого `clamp(34px,7.6vw,60px)`; меню становится выпадающим по бургеру; `#hero` получает отступ с учётом `--safe-t` |
+| `max-width:700px` | плот мобильной типографики и отступов (`.section`, `.btn`, карточки), кнопки в `.cta-row` в столбик на всю ширину, включается нижняя панель `.mbar` + `body{padding-bottom}` |
+| `hover:none` | отключены hover-смещения (на тач-устройствах hover «залипает» после тапа) |
+
+- `index.html` подключает `viewport-fit=cover` — из него в `:root` идут `--safe-t`/`--safe-b` (`env(safe-area-inset-*)`); их используют `#nav`, `#hero`, `section[id]{scroll-margin-top}`, `.mbar`.
+- `.mbar` — дубль кнопок Telegram/Avito, закреплён снизу **только** в `@media(max-width:700px)`; вне его `display:none`. Под него зарезервирован `body{padding-bottom:calc(67px + var(--safe-b))}`.
+- `body.menu-lock` (вешает `index.js`) запрещает прокрутку под открытым меню; снимается в `closeMenu()` и при `innerWidth>880`.
 
 ## Что менять вместе с чем (контракты)
 | Изменили | Обновите обязательно |
@@ -34,6 +47,10 @@ index.html ──> index.css   (стили; классы кнопок конта
 | ссылки Telegram/Avito | все вхождения в `index.html` + таблицу выше |
 | классы `.btn-tg`/`.btn-avito`/`.contacts-2`/`.contact-link` | `index.css` и все кнопки/карточки в `index.html` |
 | id секций (`#services`, `#portfolio`, `#how`, `#contact`) | якоря в навигации и футере, карту `map` в `index.js` |
+| классы/кнопки Telegram/Avito | все вхождения + `.mbar` (нижняя мобильная панель) |
+| `--nav-h`, размеры `.brand` | медиазапрос `max-width:880px`, `scroll-margin-top` секций, отступ `#hero` |
+| высота `.mbar` | `body{padding-bottom}` в `@media(max-width:700px)`, иначе футер скрывается под панелью |
+| брейкпоинт меню (880px) | `@media(max-width:880px)` в `index.css` и проверку `innerWidth>880` в `index.js` |
 
 ## Тесты
 Тестов нет.
@@ -41,3 +58,5 @@ index.html ──> index.css   (стили; классы кнопок конта
 ## Ограничения, важные при правках
 - Проект — статическая витрина без бэкенда: любая новая функциональность контактов — только внешние ссылки (Telegram/Avito) либо новый бэкенд (осознанное расширение).
 - Порядок тегов: `index.js` подключается перед `</body>` и обращается к DOM напрямую — скрипт должен оставаться после разметки.
+- Горизонтального скролла на телефонах быть не должно: `body{overflow-x:hidden}` + `#hero{overflow:hidden}`; новые широкие элементы проверяйте на 320–390px.
+- Анимации уважают `prefers-reduced-motion`; частицы дополнительно останавливаются на `visibilitychange`.

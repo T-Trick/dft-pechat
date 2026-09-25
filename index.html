@@ -2,7 +2,9 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#07080a">
+<meta name="format-detection" content="telephone=no">
 <title>DtfLab — DTF печать на ткани по России</title>
 <meta name="description" content="DtfLab — быстрая DTF печать принтов на футболках и текстиле. Опыт 5+ лет, 50 000+ изделий. Печать на вашей ткани или нашем текстиле, от 1 штуки. Пишите в Telegram или заказывайте на Avito — доставка по России.">
 <link rel="stylesheet" href="index.css">
@@ -16,7 +18,7 @@
     <svg class="mark" viewBox="0 0 32 32" fill="none"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f2f5f9"/><stop offset=".5" stop-color="#a9c1dd"/><stop offset="1" stop-color="#44536e"/></linearGradient></defs><path d="M15 5.5H30l-2.6 6.6H17" stroke="url(#bg)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 26.5H2l2.6-6.6H15" stroke="url(#bg)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
     <span>Dtf<em>Lab</em></span>
   </a>
-  <button class="burger" id="burger" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
+  <button class="burger" id="burger" aria-label="Меню" aria-controls="menu" aria-expanded="false"><span></span><span></span><span></span></button>
   <ul class="menu" id="menu">
     <li><a href="#hero">Главная</a></li>
     <li><a href="#services">Услуги</a></li>
@@ -202,133 +204,120 @@
     </div>
     <div class="portfolio">
 
-      <!-- САМУРАЙ -->
+      <!-- TWIINS/BIRTHDAY -->
+      <figure class="pcard reveal">
+        <div class="pic">
+          <span class="sticker">Праздник</span>
+          <img src="assets/portfolio/twins-birthday.jpg" alt="Футболка с принтом на день рождения двойняшек" loading="lazy">
+        </div>
+        <figcaption>
+          <span class="tag">Светлый принт</span>
+          <h3>Двойняшки «Праздник»</h3>
+          <p>Яркая тематическая печать на день рождения — эмоции для всей семьи.</p>
+        </figcaption>
+      </figure>
+
+      <!-- MAKS/BIRKIN -->
       <figure class="pcard reveal">
         <div class="pic">
           <span class="sticker">Популярно</span>
-          <svg viewBox="0 0 320 340" role="img" aria-label="Футболка с принтом самурая">
-            <defs>
-              <linearGradient id="teeLW" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#e9edf3"/></linearGradient>
-              <linearGradient id="sunGR" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d7dde6"/><stop offset="1" stop-color="#7d94b5"/></linearGradient>
-            </defs>
-            <path d="M95 62 L40 48 20 74 44 96 52 308 H268 L276 96 300 74 280 48 225 62 C200 96 120 96 95 62 Z" fill="url(#teeLW)" stroke="#ccd3de" stroke-width="1.5"/>
-            <circle cx="160" cy="170" r="52" fill="url(#sunGR)"/>
-            <g fill="none" stroke="#14161c" stroke-linecap="round" stroke-linejoin="round">
-              <path stroke-width="6" d="M148 146 L160 104 C146 110 132 122 122 136 M160 104 C174 110 188 122 198 136"/>
-              <path stroke-width="5" d="M118 150 L160 160 L202 150"/>
-              <path stroke-width="5" d="M160 104 L160 72 C150 66 140 68 136 76 L160 104 M160 104 L160 72 C170 66 180 68 184 76 L160 104"/>
-              <path stroke-width="5" d="M160 160 C168 182 168 204 160 224 M160 160 C152 182 152 204 160 224"/>
-              <path stroke-width="6" d="M120 150 C126 162 138 170 150 174 M200 150 C194 162 182 170 170 174"/>
-            </g>
-            <path stroke="#14161c" stroke-width="3" d="M188 132 L214 98" opacity=".9"/>
-            <g opacity=".85">
-              <path fill="#5d7290" d="M112 208c6-9 17-7 18 2 1 7-6 11-11 10-5-2-8-7-7-12z"/>
-              <path fill="#a9c1dd" d="M208 202c-6-8-16-6-16 2 0 7 5 11 9 9 5-2 8-7 7-11z"/>
-            </g>
-          </svg>
+          <img src="assets/portfolio/maks-birkin.jpg" alt="Футболка с принтом Макса Биркина" loading="lazy">
         </div>
         <figcaption>
-          <span class="tag">Белая футболка</span>
-          <h3>Самурай «Кислота»</h3>
-          <p>Яркое солнце, силуэт и сочные брызги для дерзкого вайба.</p>
+          <span class="tag">Светлый принт</span>
+          <h3>Макс Биркин</h3>
+          <p>Узнаваемый образ в стойкой DTF-печати — ярко и без выцветания.</p>
         </figcaption>
       </figure>
 
-      <!-- МИШКА -->
+      <!-- RICE AND ROLL -->
+      <figure class="pcard reveal">
+        <div class="pic">
+          <span class="sticker">Кухня</span>
+          <img src="assets/portfolio/rice-and-roll.jpg" alt="Футболка с принтом риса и роллов" loading="lazy">
+        </div>
+        <figcaption>
+          <span class="tag">Светлый принт</span>
+          <h3>Rice &amp; Roll</h3>
+          <p>Сочная фуд-графика для кафе и ресторанов — детали печатаются чётко.</p>
+        </figcaption>
+      </figure>
+
+      <!-- KINO ZRITEL -->
+      <figure class="pcard reveal">
+        <div class="pic">
+          <span class="sticker">Кино</span>
+          <img src="assets/portfolio/kino-zritel.jpg" alt="Футболка с принтом кинозрителя" loading="lazy">
+        </div>
+        <figcaption>
+          <span class="tag">Светлый принт</span>
+          <h3>Кинозритель</h3>
+          <p>Цветная печать без потери деталей — идеально для поп-арта и графики.</p>
+        </figcaption>
+      </figure>
+
+      <!-- LEGEND 2003 -->
       <figure class="pcard reveal">
         <div class="pic">
           <span class="sticker">Хит</span>
-          <svg viewBox="0 0 320 340" role="img" aria-label="Футболка с принтом мишки">
-            <defs>
-              <linearGradient id="teeBk" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#171c26"/><stop offset="1" stop-color="#0a0d13"/></linearGradient>
-              <radialGradient id="bearGl" cx=".5" cy=".5" r=".5"><stop stop-color="#a9c1dd" stop-opacity=".35"/><stop offset="1" stop-color="#a9c1dd" stop-opacity="0"/></radialGradient>
-            </defs>
-            <path d="M95 62 L40 48 20 74 44 96 52 308 H268 L276 96 300 74 280 48 225 62 C200 96 120 96 95 62 Z" fill="url(#teeBk)" stroke="#2b3444" stroke-width="1.5"/>
-            <ellipse cx="160" cy="204" rx="72" ry="62" fill="url(#bearGl)"/>
-            <circle cx="128" cy="134" r="17" fill="#d7dde6"/><circle cx="196" cy="134" r="17" fill="#d7dde6"/>
-            <circle cx="128" cy="134" r="9" fill="#8195af"/><circle cx="196" cy="134" r="9" fill="#8195af"/>
-            <ellipse cx="162" cy="156" rx="42" ry="39" fill="#8195af"/>
-            <ellipse cx="162" cy="166" rx="21" ry="13" fill="#e4e9f0"/>
-            <path d="M146 156c0-4 4-6 8-5l8 2 8-2c4 1 6 4 4 8l-14 6z" fill="#14161c"/>
-            <ellipse cx="150" cy="154" rx="3" ry="4" fill="#5d7290"/><ellipse cx="174" cy="154" rx="3" ry="4" fill="#5d7290"/>
-            <path d="M178 176c-6 20-22 34-40 38l-4 38-10-6 6-42c16-6 30-18 36-36z" fill="#7d94b5" opacity=".9"/>
-            <path d="M178 176c6 2 12 6 16 12" stroke="#fff" stroke-width="2" fill="none" opacity=".7"/>
-            <g fill="#a9c1dd" opacity=".9"><circle cx="96" cy="160" r="2.5"/><circle cx="228" cy="150" r="2"/><circle cx="234" cy="174" r="1.8"/></g>
-          </svg>
+          <img src="assets/portfolio/legend-2003.jpg" alt="Футболка с принтом Легенда 2003" loading="lazy">
         </div>
         <figcaption>
-          <span class="tag">Чёрная футболка</span>
-          <h3>Мишка «Тёплый»</h3>
-          <p>Сочный мишка в худи — милота с характером.</p>
+          <span class="tag">Тёмная база</span>
+          <h3>Легенда 2003</h3>
+          <p>Ретро-вайб и плотная заливка — принт держится после многих стирок.</p>
         </figcaption>
       </figure>
 
-      <!-- АСТРОНАВТ -->
+      <!-- PATRIOT CLUB -->
       <figure class="pcard reveal">
         <div class="pic">
-          <span class="sticker">Космос</span>
-          <svg viewBox="0 0 320 340" role="img" aria-label="Футболка с принтом астронавта">
-            <defs>
-              <linearGradient id="teeBN" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#171c26"/><stop offset="1" stop-color="#0a0d13"/></linearGradient>
-              <linearGradient id="visV" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d7dde6"/><stop offset="1" stop-color="#8195af"/></linearGradient>
-              <radialGradient id="astGl" cx=".5" cy=".5" r=".5"><stop stop-color="#5d7290" stop-opacity=".3"/><stop offset="1" stop-color="#5d7290" stop-opacity="0"/></radialGradient>
-            </defs>
-            <path d="M95 62 L40 48 20 74 44 96 52 308 H268 L276 96 300 74 280 48 225 62 C200 96 120 96 95 62 Z" fill="url(#teeBN)" stroke="#2b3444" stroke-width="1.5"/>
-            <circle cx="160" cy="176" r="64" fill="url(#astGl)"/>
-            <g opacity=".9" fill="#a9c1dd">
-              <path d="M100 128c7-11 20-10 21 1 1 9-8 14-16 11-7-3-9-9-5-12z"/>
-              <path d="M220 130c-7-10-19-8-20 1 0 9 8 13 16 10 7-3 8-8 4-11z"/>
-            </g>
-            <g opacity=".9" fill="#7d94b5">
-              <path d="M122 200c5 6 14 5 16-2 1-6-5-10-10-8-5 1-8 6-6 10z"/>
-              <path d="M200 196c-6 5-15 3-16-3 0-5 4-9 9-8 5 1 9 6 7 11z"/>
-            </g>
-            <circle cx="160" cy="150" r="34" fill="#f0f3f7" stroke="#bcc4d2" stroke-width="1.5"/>
-            <circle cx="171" cy="159" r="19" fill="url(#visV)"/>
-            <path d="M160 122c10 3 17 9 19 18" stroke="#fff" stroke-width="2.5" stroke-linecap="round" opacity=".95"/>
-            <path d="M142 202c-10 6-14 16-14 26h64c0-10-4-20-14-26" fill="#f0f3f7" stroke="#bcc4d2" stroke-width="1.5"/>
-            <path d="M160 204v24" stroke="#bcc4d2" stroke-width="1.5"/>
-            <path d="M146 184l-12-6M174 184l12-6" stroke="#d7dde6" stroke-width="3" stroke-linecap="round"/>
-          </svg>
+          <span class="sticker">Клуб</span>
+          <img src="assets/portfolio/patriot-club.jpg" alt="Футболка с принтом Patriot Club" loading="lazy">
         </div>
         <figcaption>
-          <span class="tag">Чёрная футболка</span>
-          <h3>Астронавт «Вояджер»</h3>
-          <p>Золотой визор и вспышки неона по всему рукаву.</p>
+          <span class="tag">Цветной принт</span>
+          <h3>Patriot Club</h3>
+          <p>Клубная символика и сочные цвета в стойком DTF-нанесении.</p>
         </figcaption>
       </figure>
 
-      <!-- ЛЕВ -->
+      <!-- ATLANT TECHNIKA -->
       <figure class="pcard reveal">
         <div class="pic">
-          <span class="sticker">Fire</span>
-          <svg viewBox="0 0 320 340" role="img" aria-label="Футболка с принтом льва">
-            <defs>
-              <linearGradient id="teeBF" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#171c26"/><stop offset="1" stop-color="#0a0d13"/></linearGradient>
-              <linearGradient id="maneG" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d7dde6"/><stop offset=".5" stop-color="#8195af"/><stop offset="1" stop-color="#7d94b5"/></linearGradient>
-            </defs>
-            <path d="M95 62 L40 48 20 74 44 96 52 308 H268 L276 96 300 74 280 48 225 62 C200 96 120 96 95 62 Z" fill="url(#teeBF)" stroke="#2b3444" stroke-width="1.5"/>
-            <g fill="url(#maneG)">
-              <path d="M160 122c-24-6-42-22-44-42 18-2 36 8 46 24z"/>
-              <path d="M178 124c10-24 30-36 48-34-2 18-14 32-34 38z"/>
-              <path d="M142 126c-28-12-42-32-44-50 20-2 40 12 50 30z"/>
-              <path d="M182 128c24-14 46-16 64-4-8 16-28 24-48 20z"/>
-              <path d="M140 132c-34-4-56-18-66-36 20-8 42 0 54 18z"/>
-              <path d="M184 136c30-6 50 0 60 14-16 12-38 14-58 6z"/>
-            </g>
-            <circle cx="160" cy="160" r="31" fill="#8195af"/>
-            <ellipse cx="160" cy="176" rx="15" ry="11" fill="#e4e9f0"/>
-            <circle cx="149" cy="156" r="3.4" fill="#14161c"/>
-            <circle cx="171" cy="156" r="3.4" fill="#14161c"/>
-            <circle cx="150" cy="155" r="1.1" fill="#fff" opacity=".9"/>
-            <circle cx="172" cy="155" r="1.1" fill="#fff" opacity=".9"/>
-            <path d="M142 168l-12-5M142 174l-12 2M178 168l12-5M178 174l12 2" stroke="#e4e9f0" stroke-width="1.6" stroke-linecap="round"/>
-          </svg>
+          <span class="sticker">Техника</span>
+          <img src="assets/portfolio/atlant-technika.jpg" alt="Футболка с принтом Атлант Техника" loading="lazy">
         </div>
         <figcaption>
-          <span class="tag">Чёрная футболка</span>
-          <h3>Лев «Кислотная грива»</h3>
-          <p>Радужный огонь гривы — настоящий король улиц.</p>
+          <span class="tag">Тёмная база</span>
+          <h3>Атлант Техника</h3>
+          <p>Брендирование рабочей формы — чёткие логотипы и надписи.</p>
+        </figcaption>
+      </figure>
+
+      <!-- SNOWBOARD 15M -->
+      <figure class="pcard reveal">
+        <div class="pic">
+          <span class="sticker">Спорт</span>
+          <img src="assets/portfolio/snowboard-15m.jpg" alt="Футболка с принтом сноуборда" loading="lazy">
+        </div>
+        <figcaption>
+          <span class="tag">Светлый принт</span>
+          <h3>Сноуборд</h3>
+          <p>Динамичная спортивная графика, устойчивая к износу и стирке.</p>
+        </figcaption>
+      </figure>
+
+      <!-- RUINS NIGHT -->
+      <figure class="pcard reveal">
+        <div class="pic">
+          <span class="sticker">Эстетика</span>
+          <img src="assets/portfolio/ruins-night.jpg" alt="Футболка с принтом руины ночью" loading="lazy">
+        </div>
+        <figcaption>
+          <span class="tag">Тёмная база</span>
+          <h3>Руины ночью</h3>
+          <p>Атмосферный арт с глубокими тенями и плотным белым подложем.</p>
         </figcaption>
       </figure>
 
@@ -419,6 +408,18 @@
   </div>
   <p>© 2026 DtfLab — DTF печать на ткани по России. Опыт 5+ лет, 50 000+ изделий.</p>
 </footer>
+
+<!-- НИЖНЯЯ CTA-ПАНЕЛЬ: видна только на телефонах (см. @media max-width:700px в index.css) -->
+<div class="mbar">
+  <a class="btn btn-tg" href="https://t.me/glushenkov93" target="_blank" rel="noopener">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3c.3-1.2-.9-2.1-2-1.7L2.7 9.6c-1.2.5-1.1 2.2.1 2.6l4.4 1.4 1.7 5.4c.4 1.1 1.8 1.4 2.6.5l2.4-2.4 4.4 3.2c1 .7 2.4.2 2.7-1l2.9-15zM8.9 13.3l9-5.6c.4-.3.8.3.5.6l-7 6.4c-.3.2-.5.5-.5.9l-.2 2.8-1.8-5.1z"/></svg>
+    Telegram
+  </a>
+  <a class="btn btn-avito" href="https://avito.ru/user/7eec4768a11737f848122437edc7664c/profile?src=sharing" target="_blank" rel="noopener">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2 4 20h3.3l1.6-4h6.2l1.6 4H20L12 2zm-1.7 11L12 8.2 13.7 13h-3.4z"/></svg>
+    Avito
+  </a>
+</div>
 
 <script src="index.js"></script>
 </body>
